@@ -11,5 +11,8 @@
     "moduleResolution": "node",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true
+  },
+  "ts-node": {
+    "transpileOnly": true
   }
 }
