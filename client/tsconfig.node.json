@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "es2019",
+    "lib": ["es2019"],
+    "module": "commonjs",
+    "isolatedModules": true,
+    "outDir": "dist",
+    "noEmit": false,
+    "strict": true,
+    "noImplicitAny": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true
+  }
+}
