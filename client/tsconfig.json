@@ -20,7 +20,10 @@
     "paths": {
       "@/*": [
         "src/*"
-      ]
+      ],
+      "@public/*": [
+          "public/*"
+      ],
     }
   },
   "include": [
