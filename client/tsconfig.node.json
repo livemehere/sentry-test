@@ -1,17 +1,19 @@
 {
   "compilerOptions": {
-    "target": "es2019",
-    "lib": ["es2019"],
+    "target": "esNext",
+    "lib": ["esNext"],
     "module": "commonjs",
     "isolatedModules": true,
     "outDir": "dist",
     "noEmit": false,
     "strict": true,
-    "noImplicitAny": true,
+    "noImplicitAny": false,
     "moduleResolution": "node",
     "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true
   },
+  "include": ["./server/**/*"],
   "ts-node": {
     "transpileOnly": true
   }
