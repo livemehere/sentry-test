@@ -1,14 +1,7 @@
 import express from "express";
 import next from "next";
 import chalk from "chalk";
-
-/* Sentry */
 import * as Sentry from "@sentry/node";
-import config from "./config";
-Sentry.init({
-  dsn: config.sentry.dsn,
-  debug: true,
-});
 
 const dev = process.env.NODE_ENV !== "production";
 const port = process.env.PORT || 3000;
@@ -22,21 +15,25 @@ async function start() {
     const handle = app.getRequestHandler();
 
     server.get("/error", (req, res, next) => {
-      throw new Error("GET /error");
+      throw new Error("얍얍_얍55");
     });
 
     server.use((req, res, next) => {
-      console.log(chalk.white.bgGreen("미들웨어 :: "), req.url);
+      // console.log(chalk.white.bgGreen("미들웨어 :: "), req.url);
       next();
     });
 
     /* Next 기본동작 */
     server.all("*", (req, res) => handle(req, res));
 
+    server.use(Sentry.Handlers.requestHandler());
+    server.use(Sentry.Handlers.tracingHandler());
+    server.use(Sentry.Handlers.errorHandler());
+
     /* 라우터에서 catch 되지 않은 모든 에러가 여기로 넘어옴 */
     server.use((err, req, res, next) => {
       console.log(chalk.white.bgRed("최종 에러 핸들러 :: "), err.message);
-      Sentry.captureException(err);
+      // captureException(err, req);
       res.status(500).send("에러가 발생했어요 500");
     });
 

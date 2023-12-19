@@ -1,5 +1,7 @@
+const { withSentryConfig } = require("@sentry/nextjs");
+
 /** @type{import('next').NextConfig} */
-module.exports = {
+const nextConfig = {
   redirects() {
     return [
       {
@@ -10,3 +12,7 @@ module.exports = {
     ];
   },
 };
+
+const SentryWebpackPluginOptions = {};
+
+module.exports = withSentryConfig(nextConfig, SentryWebpackPluginOptions);
